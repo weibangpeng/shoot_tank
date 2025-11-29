@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import GameCanvas from './components/GameCanvas';
 import { useGameEngine } from './hooks/useGameEngine';
@@ -64,7 +65,7 @@ const App: React.FC = () => {
           <div className="absolute top-4 left-4 right-4 flex justify-between pointer-events-none select-none">
             <div className="flex flex-col gap-2">
               <div className="bg-slate-900/80 border border-cyan-500 p-2 rounded text-cyan-400 font-bold font-mono">
-                HP: {Math.max(0, Math.ceil(uiStats.hp))} / {PLAYER_MAX_HP}
+                ARMOR: {Math.max(0, Math.ceil(uiStats.hp))} / {PLAYER_MAX_HP}
                 <div className="w-32 h-2 bg-slate-700 mt-1 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-cyan-500 transition-all duration-200" 
@@ -86,16 +87,18 @@ const App: React.FC = () => {
         {status === GameStatus.START_SCREEN && (
           <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center text-white backdrop-blur-sm z-50">
             <h1 className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-8 drop-shadow-lg">
-              NEON SURVIVOR
+              NEON SURVIVOR: TANK OPS
             </h1>
-            <p className="mb-8 text-slate-300 font-mono text-lg">
-              WASD to Move • Mouse to Aim • Click to Shoot
-            </p>
+            <div className="mb-8 text-slate-300 font-mono text-lg text-center space-y-2">
+              <p>WASD: Move Chassis / Aim Main Cannon</p>
+              <p>MOUSE: Aim MG Turret • CLICK: Fire MG</p>
+              <p>SPACE: Fire Main Cannon (High Damage)</p>
+            </div>
             <button 
               onClick={startGame}
               className="px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded shadow-[0_0_15px_rgba(8,145,178,0.6)] transition-all"
             >
-              INITIALIZE SYSTEM
+              INITIALIZE TANK SYSTEM
             </button>
           </div>
         )}
